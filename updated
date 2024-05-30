@@ -121,9 +121,53 @@ GhostTab:AddButton({
             end
         end
     })
+-- watermark thingy idfk
+VisualsTab:AddButton({
+	Name = "Watermark",
+	Callback = function()
+      		if game.CoreGui:FindFirstChild("UI") ~= nil then
+    game.CoreGui("UI"):Destroy()
+end
+local screengui = Instance.New("ScreenGui", game.CoreGui)
+screengui.Name = ("UI")
 
-local Tab = Window:MakeTab({
-	Name = "Tab 1",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+local frame = Instance.new("Frame", screengui)
+frame.Name = ("Entropy")
+frame.Size = UDim2.new(0,8)
+frame.Position = UDim2.new(0,0)
+frame.BackgroundColor3 = Color3.fromRGB(0)
+  	end    
+})
+-- fly cuz entropy is useless withought it
+BlatantTab:AddButton({
+	Name = "Flight",
+	Callback = function()
+          repeat wait() until game. Players.localPlayer.character
+
+          local player = game. Players.LocalPlayer
+          local character = player. character
+          local humanoid = character: WaitForChild ("Humanoid") local torso = character: WaitForChild ("LowerTorso") local mouse = player: GetMouse ()
+          local enabled = false
+
+          mouse. KeyDown: Connect (function (key)
+              if key == "W" then
+                  if enabled == false then
+                      enabled = true
+                      local bodyvelocity = Instance.new("BodyVelocity", torso)
+                      bodyvelocity.MaxForce = Vector3.new (math.huge,math.huge,math.huge)
+
+                      while enabled == true do
+                          bodyvelocity.Velocity = mouse.Hit.LookVector 100
+                          wait()
+                      end
+
+                  end
+             
+                  if enabled == true then
+                      enabled = false
+                      torso:FindFiestChildOfClass("BodyVelocity"):Destroy()
+                  end
+
+              end
+          end)
 })
