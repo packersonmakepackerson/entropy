@@ -1,18 +1,21 @@
-
+--rewrite moment
+local owner = "6087494666"
+wait() do
+-- discord.gg/XkuxFZUA
 local lplr = game.Players.LocalPlayer
 
-if game.PlaceId == 6872265039 then
+if game.PlaceId == 6872265039 ~= nil then
     lplr:Kick("Entropy does not support this game")
 else
     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     local Window = OrionLib:MakeWindow({
-        Name = "Entropy | basic beta",
+        Name = "Entropy | V0000.3",
         HidePremium = false,
-        IntroText = "Entropy Basic Version",
+        IntroText = "Loading",
         SaveConfig = true,
         ConfigFolder = "entropy"
     })
--- notification
+-- discord.gg/XkuxFZUA
 OrionLib:MakeNotification({
 	Name = "Executed!",
 	Content = "Entropy has booted up. Have fun cheating!",
@@ -25,14 +28,16 @@ OrionLib:MakeNotification({
         Icon = "rbxassetid://4483345998",
         PremiumOnly = false
     })
--- ghost
+-- discord.gg/XkuxFZUA
 local GhostTab = Window:MakeTab({
 	Name = "Ghost",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
--- features
-GhostTab:AddButton({
+
+
+-- discord.gg/XkuxFZUA
+Blatant:AddButton({
 	Name = "Auto Camera",
 	Callback = function()
       local RS = game.GetService("RunService")
@@ -49,7 +54,7 @@ GhostTab:AddButton({
           for _, Target in pair(workspace:GetChildren()) do
   	end    
 })
--- adding this so it seperates things
+-- discord.gg/XkuxFZUA
     BlatantTab:AddToggle({
         Name = "Speed",
         Default = false,
@@ -121,7 +126,7 @@ GhostTab:AddButton({
             end
         end
     })
--- watermark thingy idfk
+-- discord.gg/XkuxFZUA
 VisualsTab:AddButton({
 	Name = "Watermark",
 	Callback = function()
@@ -138,36 +143,113 @@ frame.Position = UDim2.new(0,0)
 frame.BackgroundColor3 = Color3.fromRGB(0)
   	end    
 })
--- fly cuz entropy is useless withought it
+-- discord.gg/XkuxFZUA
 BlatantTab:AddButton({
 	Name = "Flight",
 	Callback = function()
-          repeat wait() until game. Players.localPlayer.character
+         -- flight rewrite moment
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
 
-          local player = game. Players.LocalPlayer
-          local character = player. character
-          local humanoid = character: WaitForChild ("Humanoid") local torso = character: WaitForChild ("LowerTorso") local mouse = player: GetMouse ()
-          local enabled = false
+-- discord.gg/XkuxFZUA
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local rootPart = character:WaitForChild("HumanoidRootPart")
 
-          mouse. KeyDown: Connect (function (key)
-              if key == "W" then
-                  if enabled == false then
-                      enabled = true
-                      local bodyvelocity = Instance.new("BodyVelocity", torso)
-                      bodyvelocity.MaxForce = Vector3.new (math.huge,math.huge,math.huge)
+-- discord.gg/XkuxFZUA
+local function movePlayer(direction)
+    local cframe = rootPart.CFrame * CFrame.new(direction * 16)
+    rootPart.CFrame = cframe
+end
 
-                      while enabled == true do
-                          bodyvelocity.Velocity = mouse.Hit.LookVector 100
-                          wait()
-                      end
+-- discord.gg/XkuxFZUA
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.W then
+            movePlayer(Vector3.new(0, 0, 1))
+        elseif input.KeyCode == Enum.KeyCode.S then
+            movePlayer(Vector3.new(0, 0, -1))
+        elseif input.KeyCode == Enum.KeyCode.A then
+            movePlayer(Vector3.new(-1, 0, 0))
+        elseif input.KeyCode == Enum.KeyCode.D then
+            movePlayer(Vector3.new(1, 0, 0))
+        end
+    end
+end)
+})
+-- discord.gg/XkuxFZUA
+VisualsTab:AddButton({
+	Name = "Low GFX",
+	Callback = function()
+          if nil then repeat until nil script:Destroy() end
+ 
+while true do
+	wait()
+	if not script:IsDescendantOf(game.Players.LocalPlayer.Backpack) then
+		break
+	end
+end
+local on = false
+local done = true 
+ 
+script.Parent.MouseButton1Click:connect(function()
+	on = not on
+	if not done then return end 
+	done = false 
+	if on then 
+		for _, Parts in pairs(workspace:GetDescendants()) do 
+			if Parts:IsA("Part") then 
+				if not Parts:FindFirstChild("SurfaceType") then 
+					local SurfaceType = Instance.new("StringValue",Parts)
+					SurfaceType.Name = "SurfaceType"
+					SurfaceType.Value = tostring(Parts.Material) 
+				end
+				Parts.Material  = "SmoothPlastic"
+			end
+		end
+	else 
+		for _, Parts in pairs(workspace:GetDescendants()) do 
+			if Parts:IsA("Part") and Parts:FindFirstChild("SurfaceType") then 
+				Parts.Material  = string.sub(Parts.SurfaceType.Value,15) 
+			end
+		end	
+	end
+	done = true 
+end)
 
-                  end
-             
-                  if enabled == true then
-                      enabled = false
-                      torso:FindFiestChildOfClass("BodyVelocity"):Destroy()
-                  end
+  	end    
+})
+-- discord.gg/XkuxFZUA
+BlatantTab:AddButton({
+	Name = "Nuker",
+	Callback = function()
+      		local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
 
-              end
-          end)
+local localPlayer = Players.LocalPlayer
+local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+local sword = character:FindFirstChild("Sword")
+
+local function onSwordHit(otherPart)
+    local otherPlayer = otherPart.Parent
+    if otherPlayer and otherPlayer:IsA("Model") then
+        local bed = otherPlayer:FindFirstChild("Bed")
+        if bed then
+            bed:Destroy()
+        end
+    end
+end
+
+sword.Touched:Connect(onSwordHit)
+  	end    
+})
+--tracers lol
+VisualsTab:AddToggle({
+	Name = "Tracers",
+	Default = false,
+	Callback = function(Value)
+	        print("soon")
+	end    
 })
